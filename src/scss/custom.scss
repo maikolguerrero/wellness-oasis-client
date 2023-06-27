@@ -1,0 +1,27 @@
+// Configuración de los colores
+$primary: #A9CCE3;
+$secondary: #f7f7ce;
+$success: #82E0AA;
+$info: #5C94B4;
+$warning: #F1A35A;
+$danger: #D0576B;
+$light: #EAEAEA;
+$dark: #36313D;
+
+// Importar la tipografía Open Sans
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+
+// Importar la tipografía Montserrat
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+// Configuración de la tipografía
+main {
+  font-family: 'Open Sans', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', sans-serif;
+}
+
+// Importar los estilos de Bootstrap después de las personalizaciones
+@import '../../node_modules/bootstrap/scss/bootstrap.scss';
