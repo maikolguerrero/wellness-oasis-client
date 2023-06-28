@@ -24,10 +24,10 @@ export default function Services() {
 
   return (
     <>
-      <Container fluid className="pt-5 bg-secondary text-light" id="pociones" style={{ width: "100%" }}>
-        <h1 className="text-center mb-4 text-black">Servicios</h1>
+      <Container fluid className="pt-5 bg-secondary text-light" id="servicios" style={{ width: "100%" }}>
+        <h1 className="text-center mb-5 text-black">Servicios</h1>
         {services.filter((service) => service.is_promotion == 0).length == 0 ? (
-          <p className="text-center text-black pb-5 mb-0 d-flex justify-content-center fs-2">No hay servicios disponibles</p>
+          <p className="text-center text-danger pb-5 mb-0 d-flex justify-content-center fs-1">No hay servicios disponibles</p>
         ) : (
           <Row xs={1} sm={1} md={2} lg={3} xl={3} className="justify-content-center">
             {services
@@ -41,10 +41,10 @@ export default function Services() {
         )}
       </Container>
 
-      <Container fluid className="pt-5 text-light" id="pociones" style={{ width: "100%" }}>
-        <h1 className="text-center mb-4 text-black">Promociones Especiales</h1>
+      <Container fluid className="pt-5 text-light" id="promociones" style={{ width: "100%" }}>
+        <h1 className="text-center mb-5 text-black">Promociones Especiales</h1>
         {services.filter((service) => service.is_promotion == 1).length == 0 ? (
-          <p className="text-center text-black pb-5 mb-0 d-flex justify-content-center fs-2">No hay promociones disponibles</p>
+          <p className="text-center text-danger pb-5 mb-0 d-flex justify-content-center fs-1">No hay promociones disponibles</p>
         ) : (
           <Row xs={1} sm={1} md={2} lg={3} xl={3} className="justify-content-center">
             {services
