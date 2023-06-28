@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 export default function CustomAlert({ message, show, duration, onDismiss, redirectPath }) {
   const navigate = useNavigate();
