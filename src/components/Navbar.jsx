@@ -10,8 +10,10 @@ export default function NavbarResponsive() {
     <>
       <Navbar collapseOnSelect expand="lg" bg="primary" variant="dark">
         <Container>
-          <Image src='/assets/logo.png' alt="logo" className="img-thumbnail mx-2 p-1" style={{ width: '50px', height: 'auto' }} />
-          <Navbar.Brand href="#inicio" className='text-black'>Wellness Oasis</Navbar.Brand>
+          <Navbar.Brand as={Link} to="/">
+            <Image src='/assets/logo.png' alt="logo" as={Link} to="/" className="img-thumbnail p-1" style={{ width: '50px', height: 'auto' }} />
+          </Navbar.Brand>
+          <Navbar.Brand as={Link} to="/" className='text-black'>Wellness Oasis</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">

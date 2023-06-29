@@ -35,12 +35,12 @@ const ProtectedRoute = ({ route: Route }) => {
 
   useEffect(() => {
     // Verificar si el token existe y es válido
-    if (!token || !validateToken(token)) navigate('/admin/login');
-
+    if (!token || !validateToken(token)) navigate('/admin/login'); // Si no se ha iniciado sesión se redirige a la ruta del login
+    if (token && validateToken(token)) navigate('/admin/panel'); // Si no se redirige al panel
   }, [token, navigate]);
 
   // Si el token es válido, mostrar el componente
-  return <Route />;
+  if (token && validateToken(token)) return <Route />;
 };
 
 export default function App() {
@@ -52,14 +52,18 @@ export default function App() {
           <Routes>
             <Route path="/" Component={Home} />
             <Route path="/blog" element={<>blog</>} />
-            <Route path="/admin" element={<>admin</>} />
-            <Route path="/admin/login" Component={LoginForm} />
-            <Route path="/admin/registro" Component={RegisterForm} />
-            <Route path="/admin/panel" element={<ProtectedRoute route={Panel} />} />
+
+            <Route path="/admin" >
+              <Route path="" element={<ProtectedRoute route={Panel} />} />
+              <Route path="login" element={<LoginForm />} />
+              <Route path="registro" element={<RegisterForm />} />
+              <Route path="panel" element={<ProtectedRoute route={Panel} />} />
+            </Route>
+
             <Route path="*" Component={NotFound} />
           </Routes>
+          <Footer />
         </BrowserRouter>
-        <Footer />
       </AlertProvider>
     </main>
   );
