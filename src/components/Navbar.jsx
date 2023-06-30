@@ -3,9 +3,22 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Image from 'react-bootstrap/Image';
+import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
+import logout from '../auth/Logout';
 
 export default function NavbarResponsive() {
+  const { token, isLoggedIn, setIsLoggedIn, setToken } = useAuth();
+
+  const handleLogout = async () => {
+    const success = await logout(token);
+    if (success) {
+      setIsLoggedIn(false);
+      setToken('');
+    }
+  }
+
   return (
     <>
       <Navbar collapseOnSelect expand="lg" bg="primary" variant="dark">
@@ -21,6 +34,12 @@ export default function NavbarResponsive() {
               <Nav.Link as={Link} to="/blog" className='font-weight-bold text-black'>Blog</Nav.Link>
               <Nav.Link href="#contacto" className='font-weight-bold text-black'>Contacto</Nav.Link>
             </Nav>
+            {isLoggedIn ? (<Nav.Link>
+              <Button variant="primary" className='p-0 m-0 font-weight-bold text-danger' onClick={handleLogout}>
+                Cerrar sesión
+              </Button>
+            </Nav.Link>
+            ) : (<></>)}
           </Navbar.Collapse>
         </Container>
       </Navbar>

@@ -7,6 +7,7 @@ import Container from 'react-bootstrap/Container';
 import API_ENDPOINT from '../../../config/api_endpoint';
 import { useAlert } from '../../context/AlertContext';
 import CustomAlert from '../alerts/CustomAlert';
+import { useAuth } from '../../context/AuthContext';
 
 export default function LoginForm() {
   const { showAlert, setShowAlert, messageAlert, setMessageAlert, redirectPath, setRedirectPath, handleDismiss } = useAlert();
@@ -14,6 +15,7 @@ export default function LoginForm() {
   const [password, setPassword] = useState('');
   const [usernameError, setUsernameError] = useState('');
   const [passwordError, setPasswordError] = useState('');
+  const { setIsLoggedIn, setToken } = useAuth();
 
   const validateText = (text) => text.trim() !== '';
 
@@ -53,13 +55,16 @@ export default function LoginForm() {
 
         // Redireccionar a la ruta del panel después de iniciar sesión
         setRedirectPath('/admin/panel');
-        setMessageAlert('Inicio de sesión exitoso');
-        setShowAlert(true);
+
+        // Cambiar estado del token e isLoggedIn
+        setToken(token);
+        setIsLoggedIn(true);
       } else {
         // Manejar error de inicio de sesión no exitoso
         const dataResponse = await response.json();
         setMessageAlert(dataResponse.message);
         setShowAlert(true);
+        setIsLoggedIn(false);
       }
     } catch (error) {
       // Manejar error de solicitud
