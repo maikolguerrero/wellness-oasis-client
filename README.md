@@ -22,7 +22,7 @@ Aquí puedes ver en YouTube una demostración de la aplicación en funcionamient
 ## Instalación
 - **1.** Clona el repositorio:
 ```
-github.com/maikolguerrero/wellness-oasis-client.git
+git clone github.com/maikolguerrero/wellness-oasis-client.git
 ```
 - **2.**  Ingresa al directorio del proyecto:
 ```
